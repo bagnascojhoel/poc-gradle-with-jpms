@@ -1,0 +1,64 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.4'
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+    id 'java'
+    id 'java-library'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+sourceSets {
+    application {
+        java {}
+    }
+
+    domain {
+        java {}
+    }
+
+    infrastructure {
+        java {}
+
+    }
+
+    common {
+        java {}
+    }
+
+    integrationTest {
+        java {}
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // main
+    // main > modules
+    implementation sourceSets.application.output
+    implementation sourceSets.domain.output
+    implementation sourceSets.infrastructure.output
+    implementation sourceSets.common.output
+    // main > external
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.4'
+    // main > test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // infrastructure
+    // infrastructure > modules
+    infrastructureImplementation sourceSets.domain.output
+    infrastructureImplementation sourceSets.application.output
+    // infrastructure > external
+    infrastructureImplementation 'org.springframework.boot:spring-boot-starter-web:2.7.4'
+
+    // domain
+    domainCompileOnly 'org.projectlombok:lombok'
+    domainAnnotationProcessor 'org.projectlombok:lombok'
+    domainImplementation 'org.apache.logging.log4j:log4j-slf4j-impl'
+
+}
