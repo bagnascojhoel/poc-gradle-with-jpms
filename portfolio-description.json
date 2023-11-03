@@ -1,5 +1,5 @@
 {
     "title": "PoC Gradle with JPMS",
-    "tags": ["back-end", "clean architecture", "java", "gradle"],
-    "description": "A PoC I made for a requirement of implementing Clean Architecture with Gradle in the most modular way possible."
+    "showEvenArchived": true,
+    "complexity": "LOW"
   }
